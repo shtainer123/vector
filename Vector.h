@@ -10,11 +10,10 @@ public:
 	~Vector();
 	void setCapacity(int myCapacity);
 	void setSize(int mySize);
-	int getCapacity(Vector v2)const;
-	int getSize(Vector v2)const;
-	void print(Vector v2);
-	Vector& assign(const Vector& num);
+	int getCapacity()const;
+	int getSize()const;
+	void print();
+	void assign(const Vector& num);
 	bool operator== (const Vector& v3) const;
 	int& at(int index);
 };
-
