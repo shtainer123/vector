@@ -7,7 +7,7 @@ Vector::Vector(int _capacity=2)
 {
 	size = 0;
 	capacity = _capacity;
-	data = new int(_capacity);
+	data = new int[_capacity];
 	
 	//while (size != _capacity) {         //As long as the values are not equal, the loop promotes size
 	//	size++;
@@ -19,14 +19,14 @@ Vector::Vector(const Vector& v1)
 {
 	size = v1.size;
 	capacity = v1.capacity;
-	data = new int(v1.capacity);
+	data = new int[v1.capacity];
 }
 
 Vector::~Vector()
 {
-	if (capacity) {
+	if (data) 
 		delete data;
-	}
+	date = NULL;
 }
 
 void Vector::setCapacity(int myCapacity)
@@ -39,21 +39,16 @@ void Vector::setSize(int mySize)
 	size = mySize;
 }
 
-int Vector::getCapacity(Vector v2)const
+int Vector::getCapacity()const
 {
 
-	return v2.capacity;
+	return capacity;
 	
 }
 
-int Vector::getSize(Vector v2)const
+int Vector::getSize()const
 {
-	return v2.size;
-}
-
-int Vector::getSize(Vector v2) const
-{
-	return 0;
+	return size;
 }
 
 void Vector::print(Vector v2)
@@ -64,10 +59,13 @@ void Vector::print(Vector v2)
 	}
 }
 
-Vector& Vector::assign(const Vector& v3)
+void Vector::assign(const Vector& v3)
 {
 	capacity = v3.getCapacity();
 	size = v3.getSize();
+	delete data;
+	data = new int[capacity];
+	data = v3.data;
 	// TODO: insert return statement here
 }
 
